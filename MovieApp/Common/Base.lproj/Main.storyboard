@@ -90,18 +90,34 @@
         <!--Detail-->
         <scene sceneID="7dp-FI-iFr">
             <objects>
-                <viewController id="NOL-18-pQ5" sceneMemberID="viewController">
+                <viewController id="NOL-18-pQ5" customClass="DetailVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xUr-ZM-jZB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SF2-E8-sro">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="top" secondItem="EEZ-aP-mhQ" secondAttribute="top" id="4PI-4M-aIb"/>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="leading" secondItem="EEZ-aP-mhQ" secondAttribute="leading" id="5Rl-1m-ZYW"/>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="trailing" secondItem="EEZ-aP-mhQ" secondAttribute="trailing" id="klt-Wk-hqf"/>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="bottom" secondItem="EEZ-aP-mhQ" secondAttribute="bottom" id="oLv-jT-W0L"/>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="centerX" secondItem="xUr-ZM-jZB" secondAttribute="centerX" id="xAY-OC-qxJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="EEZ-aP-mhQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="anS-08-FrT"/>
+                    <connections>
+                        <outlet property="tableViewDetails" destination="SF2-E8-sro" id="zF6-5j-UoV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T17-eA-bSl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="139"/>
+            <point key="canvasLocation" x="1700.0000000000002" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

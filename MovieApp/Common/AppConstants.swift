@@ -7,9 +7,8 @@
 //
 
 import Foundation
-
 struct AppConstant {
-    static let endPoint = "http://www.omdbapi.com/"
+    static let apiUrl = "http://www.omdbapi.com/"
     static let apikey = "7478742a"
     
     enum segueIdentifier: String {

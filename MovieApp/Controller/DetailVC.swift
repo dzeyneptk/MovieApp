@@ -8,10 +8,7 @@
 
 import UIKit
 
-class DetailVC: UIViewController, DetailVMDelegate {
-    func sendModel(detailVM: MovieDetailVM) {
-        self.movieDetailVM = detailVM
-    }
+class DetailVC: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableViewDetails: UITableView!
@@ -58,31 +55,13 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = data[indexPath.row]
             cell.textLabel?.lineBreakMode = .byWordWrapping
             cell.textLabel?.numberOfLines = 0
-            
-            
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // movieDetailVM.getMovieName(by: self.data[indexPath.row])
+        // movieDetailVM.getMovieName(by: self.data[indexPath.row])
         
     }
 }
 
-// MARK: - MovieDetailDelegte
-extension DetailVC: MovieDetailDelegate {
-    
-    func failWith(error: String?) {
-        print(error ?? "")
-    }
-    
-    func succes() {
-        data.removeAll()
-        data.append(movieDetailVM.getString ?? "")
-        data.append(movieDetailVM.imdbRating ?? "")
-        data.append(movieDetailVM.actors ?? "")
-        data.append(movieDetailVM.country ?? "")
-        self.tableViewDetails.reloadData()
-    }
-}

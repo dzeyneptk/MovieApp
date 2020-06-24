@@ -16,7 +16,7 @@ class NetworkManager {
     var requestMethod: HTTPMethod = .get
     
     func fetchService(request: RequestModel, complationHandler: @escaping (ResponseModel?, Error?) -> Void ) {
-        guard let url = URL(string: AppConstant.endPoint) else {return}
+        guard let url = URL(string: AppConstant.apiUrl) else {return}
         
        // ActivityIndicator.shared.showIndicator()
         Alamofire.request(url, method: requestMethod, parameters: request.convertToDict(), encoding: URLEncoding(destination: .queryString), headers: nil)

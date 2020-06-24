@@ -26,6 +26,7 @@
 		5FBDCCD524A36970003C5FDA /* ResponseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCD424A36970003C5FDA /* ResponseVM.swift */; };
 		5FBDCCD924A39E3B003C5FDA /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCD824A39E3B003C5FDA /* DetailVC.swift */; };
 		5FBDCCDB24A39F96003C5FDA /* CreateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCDA24A39F96003C5FDA /* CreateTableView.swift */; };
+		5FBDCCDD24A3DC9D003C5FDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FBDCCDC24A3DC9C003C5FDA /* GoogleService-Info.plist */; };
 		DA327691C9CF780D324852B0 /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB2B27F5B91F134D752F714 /* Pods_MovieApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		5FBDCCD424A36970003C5FDA /* ResponseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseVM.swift; sourceTree = "<group>"; };
 		5FBDCCD824A39E3B003C5FDA /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		5FBDCCDA24A39F96003C5FDA /* CreateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableView.swift; sourceTree = "<group>"; };
+		5FBDCCDC24A3DC9C003C5FDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		60A434DB96FB0243ED54CFC1 /* Pods-MovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.release.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		E701925C450D163FC345D7CC /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB2B27F5B91F134D752F714 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 				5FBDCCAF24A260CE003C5FDA /* LaunchScreen.storyboard */,
 				5FBDCCC024A344E5003C5FDA /* Utility */,
 				5FBDCCB224A260CE003C5FDA /* Info.plist */,
+				5FBDCCDC24A3DC9C003C5FDA /* GoogleService-Info.plist */,
 				5FBDCCAA24A260CC003C5FDA /* MovieApp.xcdatamodeld */,
 			);
 			path = MovieApp;
@@ -247,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FBDCCB124A260CE003C5FDA /* LaunchScreen.storyboard in Resources */,
+				5FBDCCDD24A3DC9D003C5FDA /* GoogleService-Info.plist in Resources */,
 				5FBDCCAE24A260CE003C5FDA /* Assets.xcassets in Resources */,
 				5FBDCCA924A260CC003C5FDA /* Main.storyboard in Resources */,
 			);

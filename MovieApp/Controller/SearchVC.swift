@@ -8,12 +8,7 @@
 
 import UIKit
 
-protocol DetailVMDelegate: AnyObject {
-    func sendModel(detailVM: MovieDetailVM)
-}
-
 class SearchVC: UIViewController {
-
     // MARK: - IBOutlet
     @IBOutlet private weak var tableViewMovies: UITableView!
     
@@ -22,24 +17,23 @@ class SearchVC: UIViewController {
     private var createTableView = CreateTableView()
     private var data: String = ""
     private let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
-    private weak var detailVMDelegate: DetailVMDelegate?
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         movieDetailVM.delegate = self
-      //  createTableView.configureTableView(tableView: tableViewMovies, searchBar: searchBar)
+        //  createTableView.configureTableView(tableView: tableViewMovies, searchBar: searchBar)
         configureTableView()
         configureSearchVC()
     }
     // MARK: - Override Function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == AppConstant.segueIdentifier.searchToDetail.description {
-               let destination = segue.destination as! DetailVC
+            let destination = segue.destination as! DetailVC
             destination.movieDetailVM = movieDetailVM
-               
-           }
-       }
+            
+        }
+    }
     // MARK: - Private Functions
     private func configureTableView(){
         self.tableViewMovies.delegate = self
@@ -90,7 +84,7 @@ extension SearchVC: UISearchBarDelegate {
         if(searchBarIsEmpty()){
             searchBar.text = ""
         } else {
-        movieDetailVM.getMovieName(by: searchText)
+            movieDetailVM.getMovieName(by: searchText)
         }
     }
 }
@@ -121,9 +115,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         movieDetailVM.getMovieName(by: self.data)
-        
         performSegue(withIdentifier: AppConstant.segueIdentifier.searchToDetail.description, sender: nil)
-        detailVMDelegate?.sendModel(detailVM: movieDetailVM)
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 struct RequestModel: Codable {
     var t: String
     var apikey: String

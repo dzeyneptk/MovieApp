@@ -8,18 +8,22 @@
 
 import UIKit
 
-class MainVC: UIViewController {
+class SearchVC: UIViewController {
 
     // MARK: - IBOutlet
     @IBOutlet private weak var tableViewMovies: UITableView!
     
     // MARK: - Private Parameters
-    private var data: [String] = []
+    private var movieDetailVM = MovieDetailVM()
+    private var data: String = ""
     private let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        movieDetailVM.delegate = self
+        configureTableView()
+        configureSearchVC()
     }
     
     // MARK: - Private Functions
@@ -42,7 +46,7 @@ class MainVC: UIViewController {
 }
 
 // MARK: - UISearchDelegate
-extension MainVC: UISearchBarDelegate {
+extension SearchVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         return true
     }
@@ -52,7 +56,7 @@ extension MainVC: UISearchBarDelegate {
     }
     
     func filterContentForTextSearch(searchText: String){
-        googlePlaceVM.placeAutoComplete(text: searchText)
+        movieDetailVM.getMovieName(by: searchText)
         self.tableViewMovies.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
     }
     
@@ -72,36 +76,51 @@ extension MainVC: UISearchBarDelegate {
         if(searchBarIsEmpty()){
             searchBar.text = ""
         } else {
-            googlePlaceVM.placeAutoComplete(text: searchText)
+        movieDetailVM.getMovieName(by: searchText)
         }
     }
 }
 
-extension MainVC: UISearchResultsUpdating {
+extension SearchVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForTextSearch(searchText: searchController.searchBar.text!)
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
-extension MainVC: UITableViewDelegate, UITableViewDataSource {
+extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return googlePlaceVM.placeCount
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.text = data
         cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.numberOfLines = 0
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        googleMapsVM.getGeocode(by: self.data[indexPath.row])
+        movieDetailVM.getMovieName(by: self.data)
+        performSegue(withIdentifier: AppConstant.segueIdentifier.searchToDetail.description, sender: nil)
+    }
+}
+
+// MARK: - MovieDetailDelegte
+extension SearchVC: MovieDetailDelegate {
+    
+    func failWith(error: String?) {
+        print(error ?? "")
+    }
+    
+    func succes() {
+        data.removeAll()
+        data = movieDetailVM.getString ?? ""
+        self.tableViewMovies.reloadData()
     }
 }

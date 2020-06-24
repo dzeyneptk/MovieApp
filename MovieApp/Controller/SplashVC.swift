@@ -36,7 +36,7 @@ class SplashVC: UIViewController {
             self.timeCount += 1
             if self.timeCount == 3 {
                 timer.invalidate()
-                self.performSegue(withIdentifier: AppConstant.segueIdentifier.splashToMain.description, sender: nil)
+                self.performSegue(withIdentifier: AppConstant.segueIdentifier.splashToSearch.description, sender: nil)
             }
         }
     }
@@ -46,9 +46,6 @@ class SplashVC: UIViewController {
            super.viewDidLoad()
            checkNetwork()
        }
-    
-    // MARK: - Override Function
-      
     }
 
 

@@ -47,17 +47,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Splash" id="07t-ns-LQO"/>
                     <connections>
-                        <segue destination="hWc-Hy-KtM" kind="show" identifier="fromSplashToMain" id="58t-cz-coj"/>
+                        <segue destination="hWc-Hy-KtM" kind="show" identifier="fromSplashToSearch" id="58t-cz-coj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
         </scene>
-        <!--Main-->
+        <!--Search-->
         <scene sceneID="eL3-CI-UQv">
             <objects>
-                <viewController id="hWc-Hy-KtM" customClass="MainVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hWc-Hy-KtM" customClass="SearchVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YBw-zO-uu1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -77,14 +77,31 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8wC-LC-YDY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Main" id="Iun-bp-uNc"/>
+                    <navigationItem key="navigationItem" title="Search" id="Iun-bp-uNc"/>
                     <connections>
                         <outlet property="tableViewMovies" destination="ehK-Rq-Dn5" id="9cN-0h-tW2"/>
+                        <segue destination="NOL-18-pQ5" kind="show" identifier="fromSearchToDetail" id="FwU-Gj-67P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jxh-WS-WOF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="934.78260869565224" y="137.94642857142856"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="7dp-FI-iFr">
+            <objects>
+                <viewController id="NOL-18-pQ5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xUr-ZM-jZB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="EEZ-aP-mhQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Detail" id="anS-08-FrT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T17-eA-bSl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1700" y="139"/>
         </scene>
     </scenes>
 </document>

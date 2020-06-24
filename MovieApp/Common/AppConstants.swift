@@ -9,10 +9,12 @@
 import Foundation
 
 struct AppConstant {
-//    static let endPoint = "https://maps.googleapis.com/maps/api/geocode/json"
+    static let endPoint = "http://www.omdbapi.com/"
+    static let apikey = "7478742a"
     
     enum segueIdentifier: String {
-        case splashToMain = "fromSplashToMain"
+        case splashToSearch = "fromSplashToSearch"
+        case searchToDetail = "fromSearchToDetail"
         
         var description: String {
             return self.rawValue

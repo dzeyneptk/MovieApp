@@ -46,6 +46,12 @@ class SplashVC: UIViewController {
            super.viewDidLoad()
            checkNetwork()
        }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ActivityIndicator.shared.startEntryLoading()
+        //ActivityIndicator.shared.showIndicator()
     }
+    }
+
 
 

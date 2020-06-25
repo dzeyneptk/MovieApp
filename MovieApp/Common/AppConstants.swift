@@ -19,4 +19,12 @@ struct AppConstant {
             return self.rawValue
         }
     }
+    enum indicatorViewType: String {
+        case entryLoad = "lineScalePulseOut"
+        case searchingLoad = ""
+        
+        var description: String {
+            return self.rawValue
+        }
+    }
 }

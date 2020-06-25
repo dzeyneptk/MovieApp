@@ -21,12 +21,15 @@ class MovieDetailVM {
     func getMovieName(by text: String) {
         
         let requestParameter = RequestModel(movieName: text)
+        ActivityIndicator.shared.showIndicator()
         NetworkManager.shared.fetchService(request: requestParameter) { (response, error) in
             if let error = error {
+                ActivityIndicator.shared.stopIndicator()
                 self.delegate?.failWith(error: error.localizedDescription)
                 return
             }
             if let response = response {
+                ActivityIndicator.shared.stopIndicator()
                 self.responseModel = response
                 self.result = response.title ?? ""
                 self.delegate?.succes()
@@ -37,11 +40,15 @@ class MovieDetailVM {
     var imdbRating: String? {
         return ResponseVM(model: responseModel).imdbRating
     }
-    
+    var released: String? {
+        return ResponseVM(model: responseModel).released
+    }
     var actors: String? {
         return ResponseVM(model: responseModel).actors
     }
-    
+    var plot: String? {
+        return ResponseVM(model: responseModel).plot
+    }
     var country: String? {
         return ResponseVM(model: responseModel).country
     }

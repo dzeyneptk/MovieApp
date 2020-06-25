@@ -79,6 +79,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="Iun-bp-uNc"/>
                     <connections>
+                        <outlet property="navigationItemSearch" destination="Iun-bp-uNc" id="1IY-Ly-Nsq"/>
                         <outlet property="tableViewMovies" destination="ehK-Rq-Dn5" id="9cN-0h-tW2"/>
                         <segue destination="NOL-18-pQ5" kind="show" identifier="fromSearchToDetail" id="FwU-Gj-67P"/>
                     </connections>

@@ -11,6 +11,7 @@ import UIKit
 class SearchVC: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet private weak var tableViewMovies: UITableView!
+    @IBOutlet weak var navigationItemSearch: UINavigationItem!
     
     // MARK: - Private Parameters
     private var movieDetailVM = MovieDetailVM()
@@ -25,7 +26,12 @@ class SearchVC: UIViewController {
         //  createTableView.configureTableView(tableView: tableViewMovies, searchBar: searchBar)
         configureTableView()
         configureSearchVC()
+        navigationItem.hidesBackButton = true
     }
+    override func viewDidAppear(_ animated: Bool) {
+        ActivityIndicator.shared.stopEntryLoading()
+    }
+    
     // MARK: - Override Function
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == AppConstant.segueIdentifier.searchToDetail.description {
@@ -128,7 +134,10 @@ extension SearchVC: MovieDetailDelegate {
     
     func succes() {
         data.removeAll()
-        data = movieDetailVM.getString ?? ""
+        data = movieDetailVM.getString ?? "Movie not found!"
+        if (data == ""){
+            data = "Movie not found!"
+        }
         self.tableViewMovies.reloadData()
     }
 }

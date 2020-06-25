@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailVC: UIViewController {
     
@@ -22,12 +23,19 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         configureTableView()
         data.removeAll()
-        data.append(movieDetailVM.getString ?? "")
-        data.append(movieDetailVM.imdbRating ?? "")
-        data.append(movieDetailVM.actors ?? "")
-        data.append(movieDetailVM.country ?? "")
+        data.append("Movie Name: " + (movieDetailVM.getString ?? "") )
+        data.append("Imdb: " + (movieDetailVM.imdbRating ?? "") )
+        data.append("Realise time: " + (movieDetailVM.released ?? ""))
+        data.append("Plot:" + (movieDetailVM.plot ?? ""))
+        data.append("Actors: " + (movieDetailVM.actors ?? "") )
+        data.append("Country: " + (movieDetailVM.country ?? "") )
         self.tableViewDetails.reloadData()
-        
+        Analytics.logEvent("movie_details", parameters: [
+        "name": movieDetailVM.getString ?? "" as NSObject,
+        "imdbrating": movieDetailVM.imdbRating ?? "" as NSObject,
+        "actors": movieDetailVM.actors ?? "" as NSObject,
+        "country": movieDetailVM.country ?? "" as NSObject,
+        ])
     }
     
     // MARK: - Private Functions

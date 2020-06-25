@@ -31,17 +31,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pinsoft" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="26b-GJ-I41">
-                                <rect key="frame" x="172.5" y="434.5" width="69.5" height="27.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pinsoft.png" translatesAutoresizingMaskIntoConstraints="NO" id="QXv-eG-w8s">
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.67843137254901964" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="26b-GJ-I41" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5DJ-6x-scD"/>
-                            <constraint firstItem="26b-GJ-I41" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kGI-QZ-OsD"/>
+                            <constraint firstItem="QXv-eG-w8s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="6EQ-63-CZJ"/>
+                            <constraint firstItem="QXv-eG-w8s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="296" id="ROz-n2-T9B"/>
+                            <constraint firstItem="QXv-eG-w8s" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="alh-dD-N3X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QXv-eG-w8s" secondAttribute="bottom" constant="350" id="cCe-XI-TOn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QXv-eG-w8s" secondAttribute="trailing" constant="87" id="dIC-5g-e5t"/>
+                            <constraint firstItem="QXv-eG-w8s" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e2t-ck-55P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -62,12 +63,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ehK-Rq-Dn5">
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ehK-Rq-Dn5">
                                 <rect key="frame" x="0.0" y="88" width="414" height="720"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.67843137254901964" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ehK-Rq-Dn5" firstAttribute="top" secondItem="8wC-LC-YDY" secondAttribute="top" id="086-Af-fhW"/>
                             <constraint firstItem="ehK-Rq-Dn5" firstAttribute="trailing" secondItem="8wC-LC-YDY" secondAttribute="trailing" id="NXd-Md-Qe4"/>
@@ -96,12 +98,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SF2-E8-sro">
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SF2-E8-sro">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.67843137254901964" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="SF2-E8-sro" firstAttribute="top" secondItem="EEZ-aP-mhQ" secondAttribute="top" id="4PI-4M-aIb"/>
                             <constraint firstItem="SF2-E8-sro" firstAttribute="leading" secondItem="EEZ-aP-mhQ" secondAttribute="leading" id="5Rl-1m-ZYW"/>
@@ -121,4 +124,7 @@
             <point key="canvasLocation" x="1700.0000000000002" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pinsoft.png" width="200" height="200"/>
+    </resources>
 </document>

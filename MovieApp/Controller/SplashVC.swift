@@ -43,15 +43,15 @@ class SplashVC: UIViewController {
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
-           super.viewDidLoad()
-           checkNetwork()
-       }
+        super.viewDidLoad()
+        checkNetwork()
+        Gradient.shared.addGradientToView(view: view)
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         ActivityIndicator.shared.startEntryLoading()
-        //ActivityIndicator.shared.showIndicator()
     }
-    }
+}
 
 
 

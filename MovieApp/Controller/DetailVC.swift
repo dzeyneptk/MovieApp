@@ -22,6 +22,7 @@ class DetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        Gradient.shared.addGradientToView(view: view)
         data.removeAll()
         data.append("Movie Name: " + (movieDetailVM.getString ?? "") )
         data.append("Imdb: " + (movieDetailVM.imdbRating ?? "") )
@@ -42,7 +43,7 @@ class DetailVC: UIViewController {
     private func configureTableView(){
         self.tableViewDetails.delegate = self
         self.tableViewDetails.dataSource = self
-        self.tableViewDetails.backgroundColor = UIColor.white
+        self.tableViewDetails.backgroundColor = UIColor.clear
         self.tableViewDetails.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 }
@@ -63,6 +64,7 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.textLabel?.text = data[indexPath.row]
             cell.textLabel?.lineBreakMode = .byWordWrapping
             cell.textLabel?.numberOfLines = 0
+            cell.backgroundColor = UIColor.clear
         }
         return cell
     }

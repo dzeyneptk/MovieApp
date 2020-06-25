@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class CreateTableView: UIViewController {
-    
+    static let shared = CreateTableView()
     // MARK: -  Functions
     func configureTableView(tableView: UITableView, searchBar: UISearchBar){
         tableView.delegate = self as? UITableViewDelegate

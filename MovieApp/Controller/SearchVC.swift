@@ -15,7 +15,6 @@ class SearchVC: UIViewController {
     
     // MARK: - Private Parameters
     private var movieDetailVM = MovieDetailVM()
-    private var createTableView = CreateTableView()
     private var data: String = ""
     private let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
     
@@ -23,7 +22,8 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         movieDetailVM.delegate = self
-        //  createTableView.configureTableView(tableView: tableViewMovies, searchBar: searchBar)
+        Gradient.shared.addGradientToView(view: view)
+        //CreateTableView.shared.configureTableView(tableView: tableViewMovies, searchBar: searchBar)
         configureTableView()
         configureSearchVC()
         navigationItem.hidesBackButton = true
@@ -45,7 +45,7 @@ class SearchVC: UIViewController {
         self.tableViewMovies.delegate = self
         self.tableViewMovies.dataSource = self
         self.tableViewMovies.tableHeaderView = searchBar
-        self.tableViewMovies.backgroundColor = UIColor.white
+        self.tableViewMovies.backgroundColor = UIColor.clear
         self.tableViewMovies.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
@@ -84,11 +84,15 @@ extension SearchVC: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.resignFirstResponder()
         self.tableViewMovies.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
+        data.removeAll()
+        self.tableViewMovies.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchBarIsEmpty()){
             searchBar.text = ""
+            data.removeAll()
+            self.tableViewMovies.reloadData()
         } else {
             movieDetailVM.getMovieName(by: searchText)
         }
@@ -116,6 +120,7 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = data
         cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.numberOfLines = 0
+        cell.backgroundColor = UIColor.clear
         return cell
     }
     

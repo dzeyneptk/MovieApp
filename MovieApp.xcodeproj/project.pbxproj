@@ -28,6 +28,8 @@
 		5FBDCCDB24A39F96003C5FDA /* CreateTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCDA24A39F96003C5FDA /* CreateTableView.swift */; };
 		5FBDCCDD24A3DC9D003C5FDA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5FBDCCDC24A3DC9C003C5FDA /* GoogleService-Info.plist */; };
 		5FBDCCDF24A47C1C003C5FDA /* ActivityIndicatorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCDE24A47C1C003C5FDA /* ActivityIndicatorHelper.swift */; };
+		5FBDCCE124A4A183003C5FDA /* pinsoft.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FBDCCE024A4A183003C5FDA /* pinsoft.png */; };
+		5FBDCCE324A4A532003C5FDA /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCE224A4A532003C5FDA /* BackgroundGradient.swift */; };
 		DA327691C9CF780D324852B0 /* Pods_MovieApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB2B27F5B91F134D752F714 /* Pods_MovieApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		5FBDCCDA24A39F96003C5FDA /* CreateTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTableView.swift; sourceTree = "<group>"; };
 		5FBDCCDC24A3DC9C003C5FDA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5FBDCCDE24A47C1C003C5FDA /* ActivityIndicatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorHelper.swift; sourceTree = "<group>"; };
+		5FBDCCE024A4A183003C5FDA /* pinsoft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinsoft.png; sourceTree = "<group>"; };
+		5FBDCCE224A4A532003C5FDA /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
 		60A434DB96FB0243ED54CFC1 /* Pods-MovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.release.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		E701925C450D163FC345D7CC /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB2B27F5B91F134D752F714 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				5FBDCCAD24A260CE003C5FDA /* Assets.xcassets */,
+				5FBDCCE024A4A183003C5FDA /* pinsoft.png */,
 				5FBDCCBA24A3447C003C5FDA /* Common */,
 				5FBDCCBB24A344AF003C5FDA /* Controller */,
 				5FBDCCBC24A344BA003C5FDA /* View */,
@@ -151,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				5FBDCCDA24A39F96003C5FDA /* CreateTableView.swift */,
+				5FBDCCE224A4A532003C5FDA /* BackgroundGradient.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FBDCCE124A4A183003C5FDA /* pinsoft.png in Resources */,
 				5FBDCCB124A260CE003C5FDA /* LaunchScreen.storyboard in Resources */,
 				5FBDCCDD24A3DC9D003C5FDA /* GoogleService-Info.plist in Resources */,
 				5FBDCCAE24A260CE003C5FDA /* Assets.xcassets in Resources */,
@@ -319,6 +326,7 @@
 				5FBDCCC624A350B8003C5FDA /* AppConstants.swift in Sources */,
 				5FBDCCD524A36970003C5FDA /* ResponseVM.swift in Sources */,
 				5FBDCCC824A351AE003C5FDA /* SearchVC.swift in Sources */,
+				5FBDCCE324A4A532003C5FDA /* BackgroundGradient.swift in Sources */,
 				5FBDCCCF24A36564003C5FDA /* RequestModel.swift in Sources */,
 				5FBDCCAC24A260CC003C5FDA /* MovieApp.xcdatamodeld in Sources */,
 				5FBDCCD324A36913003C5FDA /* MovieDetailVM.swift in Sources */,

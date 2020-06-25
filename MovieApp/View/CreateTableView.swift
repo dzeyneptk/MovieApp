@@ -11,7 +11,7 @@ import UIKit
 
 class CreateTableView: UIViewController {
     static let shared = CreateTableView()
-    // MARK: -  Functions
+    // MARK: -  Function
     func configureTableView(tableView: UITableView, searchBar: UISearchBar){
         tableView.delegate = self as? UITableViewDelegate
         tableView.dataSource = self as? UITableViewDataSource

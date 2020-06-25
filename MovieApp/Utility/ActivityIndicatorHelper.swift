@@ -14,7 +14,7 @@ class ActivityIndicator: NVActivityIndicatorViewable {
     
     static let shared = ActivityIndicator()
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    var indicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0), type: NVActivityIndicatorType.lineScalePulseOut, color: UIColor.blue, padding: 2.0)
+    var indicator: NVActivityIndicatorView = NVActivityIndicatorView(frame: CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0), type: NVActivityIndicatorType.lineScalePulseOut, color: UIColor.white, padding: 2.0)
     private var topVCView = UIApplication.shared.windows.first?.rootViewController?.view
     
     func showIndicator() {

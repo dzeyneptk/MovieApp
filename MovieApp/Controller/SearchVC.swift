@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
 class SearchVC: UIViewController {
+    
     // MARK: - IBOutlet
     @IBOutlet private weak var tableViewMovies: UITableView!
     @IBOutlet weak var navigationItemSearch: UINavigationItem!

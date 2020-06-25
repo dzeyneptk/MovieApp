@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 struct ResponseVM {
     private var responseModel : ResponseModel?
     

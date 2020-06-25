@@ -7,11 +7,21 @@
 //
 
 import UIKit
-
 class SplashVC: UIViewController {
     
     // MARK: - Private Parameters
     private var timeCount = 0
+    
+    // MARK: - Lifecycles
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        checkNetwork()
+        Gradient.shared.addGradientToView(view: view)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ActivityIndicator.shared.startEntryLoading()
+    }
     
     // MARK: - Private Functions
     private func checkNetwork() {
@@ -41,15 +51,14 @@ class SplashVC: UIViewController {
         }
     }
     
-    // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        checkNetwork()
-        Gradient.shared.addGradientToView(view: view)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        ActivityIndicator.shared.startEntryLoading()
+    private func checkNotificationPermission() {
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            
+            if error != nil {
+                print("error")
+            }
+        }
     }
 }
 

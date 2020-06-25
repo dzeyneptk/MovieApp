@@ -59,6 +59,7 @@
 		5FBDCCDE24A47C1C003C5FDA /* ActivityIndicatorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorHelper.swift; sourceTree = "<group>"; };
 		5FBDCCE024A4A183003C5FDA /* pinsoft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pinsoft.png; sourceTree = "<group>"; };
 		5FBDCCE224A4A532003C5FDA /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
+		5FBDCCE624A4E790003C5FDA /* MovieApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MovieApp.entitlements; sourceTree = "<group>"; };
 		60A434DB96FB0243ED54CFC1 /* Pods-MovieApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.release.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.release.xcconfig"; sourceTree = "<group>"; };
 		E701925C450D163FC345D7CC /* Pods-MovieApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp.debug.xcconfig"; path = "Target Support Files/Pods-MovieApp/Pods-MovieApp.debug.xcconfig"; sourceTree = "<group>"; };
 		EDB2B27F5B91F134D752F714 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +115,7 @@
 		5FBDCCA024A260CC003C5FDA /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				5FBDCCE624A4E790003C5FDA /* MovieApp.entitlements */,
 				5FBDCCAD24A260CE003C5FDA /* Assets.xcassets */,
 				5FBDCCE024A4A183003C5FDA /* pinsoft.png */,
 				5FBDCCBA24A3447C003C5FDA /* Common */,
@@ -477,6 +479,7 @@
 			baseConfigurationReference = E701925C450D163FC345D7CC /* Pods-MovieApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MovieApp/MovieApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F966A2BH3H;
 				INFOPLIST_FILE = MovieApp/Info.plist;
@@ -496,6 +499,7 @@
 			baseConfigurationReference = 60A434DB96FB0243ED54CFC1 /* Pods-MovieApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MovieApp/MovieApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F966A2BH3H;
 				INFOPLIST_FILE = MovieApp/Info.plist;

@@ -8,14 +8,6 @@
 
 import Foundation
 import AlamofireImage
-protocol MovieDetailDelegate: class {
-    func failWith(error: String?)
-    func succes()
-}
-protocol PosterImageDelegate: class {
-    func failWith(error: String?)
-    func succes()
-}
 
 class MovieDetailVM {
     private var responseModel: ResponseModel?
@@ -85,5 +77,14 @@ class MovieDetailVM {
     var image: UIImage? {
         return imageResult
     }
+}
+
+protocol MovieDetailDelegate: class {
+    func failWith(error: String?)
+    func succes()
+}
+protocol PosterImageDelegate: class {
+    func failWith(error: String?)
+    func succes()
 }
 

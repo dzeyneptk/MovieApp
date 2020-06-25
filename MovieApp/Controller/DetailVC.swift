@@ -37,11 +37,12 @@ class DetailVC: UIViewController {
         movieDetailVM.getImage(url: movieDetailVM.poster ?? "")
         self.tableViewDetails.reloadData()
         Analytics.logEvent("movie_details", parameters: [
-            "name": movieDetailVM.getString ?? "" as NSObject,
+            "name":  movieDetailVM.getString ?? "" as NSObject,
             "imdbrating": movieDetailVM.imdbRating ?? "" as NSObject,
             "actors": movieDetailVM.actors ?? "" as NSObject,
             "country": movieDetailVM.country ?? "" as NSObject,
         ])
+        Analytics.logEvent("pressed_buttonSleep", parameters: nil)
     }
     
     // MARK: - Private Functions
@@ -72,11 +73,6 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = UIColor.clear
         }
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // movieDetailVM.getMovieName(by: self.data[indexPath.row])
-        
     }
 }
 

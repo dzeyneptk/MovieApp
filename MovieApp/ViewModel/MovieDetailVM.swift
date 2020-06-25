@@ -7,14 +7,18 @@
 //
 
 import Foundation
-import AlamofireImage
+import Firebase
+
+protocol MovieDetailDelegate: class {
+    func failWith(error: String?)
+    func succes()
+}
 
 class MovieDetailVM {
     private var responseModel: ResponseModel?
-    private var result: String = ""
+    private var result: [String] = []
     private var imageResult: UIImage? = nil
     weak var delegate: MovieDetailDelegate?
-    weak var posterDelegate: PosterImageDelegate?
     
     // MARK: - OMDbAPIService
     func getMovieName(by text: String) {
@@ -30,7 +34,7 @@ class MovieDetailVM {
             if let response = response {
                 ActivityIndicator.shared.stopIndicator()
                 self.responseModel = response
-                self.result = response.title ?? ""
+                self.prepareData()
                 self.delegate?.succes()
             }
         }
@@ -40,36 +44,18 @@ class MovieDetailVM {
     func getImage(url: String) {
         NetworkManager.shared.fetchImage(imageUrl: url)  { (image, error) in
         if let error = error {
-            self.posterDelegate?.failWith(error: error.localizedDescription)
+            self.delegate?.failWith(error: error.localizedDescription)
             return
         }
             if let image = image {
                 self.imageResult = image
-                self.posterDelegate?.succes()
+                self.delegate?.succes()
             }
         }
     }
     
-    var imdbRating: String? {
-        return ResponseVM(model: responseModel).imdbRating
-    }
-    var released: String? {
-        return ResponseVM(model: responseModel).released
-    }
-    var actors: String? {
-        return ResponseVM(model: responseModel).actors
-    }
-    var plot: String? {
-        return ResponseVM(model: responseModel).plot
-    }
-    var country: String? {
-        return ResponseVM(model: responseModel).country
-    }
-    var placeCount: Int? {
-        return 1
-    }
-    var getString: String? {
-        return result
+    var getString: String {
+        return responseModel?.title ?? "Movie not found!"
     }
     var poster: String? {
         return ResponseVM(model: responseModel).poster
@@ -77,14 +63,31 @@ class MovieDetailVM {
     var image: UIImage? {
         return imageResult
     }
-}
-
-protocol MovieDetailDelegate: class {
-    func failWith(error: String?)
-    func succes()
-}
-protocol PosterImageDelegate: class {
-    func failWith(error: String?)
-    func succes()
+    
+    var dataCount: Int {
+        return result.count
+    }
+    func getData(atIndex: Int) -> String {
+        return result[atIndex]
+    }
+    
+    private func prepareData() {
+        result.removeAll()
+        result.append("Movie Name: " + (responseModel?.title ?? "") )
+        result.append("Imdb: " + (responseModel?.imdbRating ?? "") )
+        result.append("Realise time: " + (responseModel?.released ?? ""))
+        result.append("Plot:" + (responseModel?.plot ?? ""))
+        result.append("Actors: " + (responseModel?.actors ?? "") )
+        result.append("Country: " + (responseModel?.country ?? "") )
+    }
+    
+    func sendAnalytics() {
+        Analytics.logEvent("movie_details", parameters: [
+            "name":  responseModel?.title ?? "" as NSObject,
+            "imdbrating": responseModel?.imdbRating ?? "" as NSObject,
+            "actors": responseModel?.actors ?? "" as NSObject,
+            "country": responseModel?.country ?? "" as NSObject,
+        ])
+    }
 }
 

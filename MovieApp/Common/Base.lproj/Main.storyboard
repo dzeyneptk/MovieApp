@@ -57,7 +57,7 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
         </scene>
-        <!--Search-->
+        <!--SearchVC-->
         <scene sceneID="eL3-CI-UQv">
             <objects>
                 <viewController id="hWc-Hy-KtM" customClass="SearchVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,9 +81,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8wC-LC-YDY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Search" id="Iun-bp-uNc"/>
                     <connections>
-                        <outlet property="navigationItemSearch" destination="Iun-bp-uNc" id="1IY-Ly-Nsq"/>
                         <outlet property="tableViewMovies" destination="ehK-Rq-Dn5" id="9cN-0h-tW2"/>
                         <segue destination="NOL-18-pQ5" kind="show" identifier="fromSearchToDetail" id="FwU-Gj-67P"/>
                     </connections>
@@ -131,11 +129,24 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="Twa-65-Mdx"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="ndt-mt-5wu"/>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UgP-m1-T6l">
+                                <rect key="frame" x="349" y="114" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UgP-m1-T6l" secondAttribute="height" multiplier="2:2" id="qje-xu-gU6"/>
+                                    <constraint firstAttribute="height" constant="35" id="qu6-7e-T25"/>
+                                </constraints>
+                                <state key="normal" image="xmark.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="closeBtnTapped:" destination="NOL-18-pQ5" eventType="touchUpInside" id="GY5-Z5-9FH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.67843137254901964" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="o7v-8r-B3B" firstAttribute="leading" secondItem="xUr-ZM-jZB" secondAttribute="leadingMargin" constant="-40" id="Hne-2q-EFC"/>
                             <constraint firstItem="o7v-8r-B3B" firstAttribute="centerX" secondItem="xUr-ZM-jZB" secondAttribute="centerX" id="iHJ-k1-qDB"/>
+                            <constraint firstItem="EEZ-aP-mhQ" firstAttribute="trailing" secondItem="UgP-m1-T6l" secondAttribute="trailing" constant="30" id="orH-Oy-rmr"/>
+                            <constraint firstItem="UgP-m1-T6l" firstAttribute="top" secondItem="EEZ-aP-mhQ" secondAttribute="top" constant="70" id="tXF-9W-N7a"/>
                             <constraint firstItem="o7v-8r-B3B" firstAttribute="top" secondItem="xUr-ZM-jZB" secondAttribute="topMargin" constant="-20" id="ulg-Gw-W73"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EEZ-aP-mhQ"/>
@@ -153,5 +164,6 @@
     </scenes>
     <resources>
         <image name="pinsoft.png" width="200" height="200"/>
+        <image name="xmark.circle" catalog="system" width="64" height="60"/>
     </resources>
 </document>

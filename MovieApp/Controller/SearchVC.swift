@@ -11,25 +11,30 @@ class SearchVC: UIViewController {
     
     // MARK: - IBOutlet
     @IBOutlet private weak var tableViewMovies: UITableView!
-    @IBOutlet weak var navigationItemSearch: UINavigationItem!
     
     // MARK: - Private Parameters
     private var movieDetailVM = MovieDetailVM()
-    private var data: String = ""
     private let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: (UIScreen.main.bounds.width), height: 70))
+    private var isEmpty = true
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieDetailVM.delegate = self
         Gradient.shared.addGradientToView(view: view)
-        //CreateTableView.shared.configureTableView(tableView: tableViewMovies, searchBar: searchBar)
         configureTableView()
         configureSearchVC()
-        navigationItem.hidesBackButton = true
     }
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         ActivityIndicator.shared.stopEntryLoading()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        movieDetailVM.delegate = self
+        isEmpty = true
+        searchBar.text = ""
+        tableViewMovies.reloadData()
     }
     
     // MARK: - Override Function
@@ -71,29 +76,27 @@ extension SearchVC: UISearchBarDelegate {
     
     func filterContentForTextSearch(searchText: String){
         movieDetailVM.getMovieName(by: searchText)
-        self.tableViewMovies.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
-        self.tableViewMovies.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.isEmpty = true
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        self.tableViewMovies.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .automatic)
-        data.removeAll()
         self.tableViewMovies.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchBarIsEmpty()){
+            self.isEmpty = true
             searchBar.text = ""
-            data.removeAll()
             self.tableViewMovies.reloadData()
         } else {
+            self.isEmpty = false
             movieDetailVM.getMovieName(by: searchText)
         }
     }
@@ -101,23 +104,25 @@ extension SearchVC: UISearchBarDelegate {
 
 extension SearchVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        filterContentForTextSearch(searchText: searchController.searchBar.text!)
+        if let textKey = searchController.searchBar.text {
+             filterContentForTextSearch(searchText: textKey)
+        }
     }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension SearchVC: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = data
+        if isEmpty {
+            cell.textLabel?.text = ""
+        } else {
+            cell.textLabel?.text = movieDetailVM.getString
+        }
         cell.textLabel?.lineBreakMode = .byWordWrapping
         cell.textLabel?.numberOfLines = 0
         cell.backgroundColor = UIColor.clear
@@ -125,25 +130,19 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        movieDetailVM.getMovieName(by: self.data)
         performSegue(withIdentifier: AppConstant.segueIdentifier.searchToDetail.description, sender: nil)
     }
 }
 
 // MARK: - MovieDetailDelegte
 extension SearchVC: MovieDetailDelegate {
+    func succes() {
+        self.isEmpty = false
+        self.tableViewMovies.reloadData()
+    }
     
     func failWith(error: String?) {
         print(error ?? "")
-    }
-    
-    func succes() {
-        data.removeAll()
-        data = movieDetailVM.getString ?? "Movie not found!"
-        if (data == ""){
-            data = "Movie not found!"
-        }
-        self.tableViewMovies.reloadData()
     }
 }
 

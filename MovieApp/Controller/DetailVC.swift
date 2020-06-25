@@ -7,18 +7,14 @@
 //
 
 import UIKit
-import Firebase
-import AlamofireImage
-import Alamofire
 
-class DetailVC: UIViewController {
+class DetailVC: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var tableViewDetails: UITableView!
-    @IBOutlet weak var imageViewPoster: UIImageView!
+    @IBOutlet private weak var tableViewDetails: UITableView!
+    @IBOutlet private weak var imageViewPoster: UIImageView!
     
     // MARK: - Private Parameters
-    private var data: [String] = []
     var movieDetailVM = MovieDetailVM()
     
     // MARK: - Life Cycle
@@ -26,23 +22,16 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         configureTableView()
         Gradient.shared.addGradientToView(view: view)
-        data.removeAll()
-        data.append("Movie Name: " + (movieDetailVM.getString ?? "") )
-        data.append("Imdb: " + (movieDetailVM.imdbRating ?? "") )
-        data.append("Realise time: " + (movieDetailVM.released ?? ""))
-        data.append("Plot:" + (movieDetailVM.plot ?? ""))
-        data.append("Actors: " + (movieDetailVM.actors ?? "") )
-        data.append("Country: " + (movieDetailVM.country ?? "") )
-        movieDetailVM.posterDelegate = self
         movieDetailVM.getImage(url: movieDetailVM.poster ?? "")
-        self.tableViewDetails.reloadData()
-        Analytics.logEvent("movie_details", parameters: [
-            "name":  movieDetailVM.getString ?? "" as NSObject,
-            "imdbrating": movieDetailVM.imdbRating ?? "" as NSObject,
-            "actors": movieDetailVM.actors ?? "" as NSObject,
-            "country": movieDetailVM.country ?? "" as NSObject,
-        ])
-        Analytics.logEvent("pressed_buttonSleep", parameters: nil)
+        movieDetailVM.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     // MARK: - Private Functions
@@ -52,39 +41,39 @@ class DetailVC: UIViewController {
         self.tableViewDetails.backgroundColor = UIColor.clear
         self.tableViewDetails.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    
+    @IBAction func closeBtnTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    private func updateUI() {
+        imageViewPoster.image = movieDetailVM.image
+        movieDetailVM.sendAnalytics()
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension DetailVC: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return movieDetailVM.dataCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        if !(data.isEmpty){
-            cell.textLabel?.text = data[indexPath.row]
-            cell.textLabel?.lineBreakMode = .byWordWrapping
-            cell.textLabel?.numberOfLines = 0
-            cell.backgroundColor = UIColor.clear
-        }
+        cell.textLabel?.text = movieDetailVM.getData(atIndex: indexPath.row)
+        cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.numberOfLines = 0
+        cell.backgroundColor = UIColor.clear
         return cell
     }
 }
 
 // MARK: - PosterImageDelegate
-extension DetailVC: PosterImageDelegate {
-    
+extension DetailVC: MovieDetailDelegate {
+    func succes() {
+        updateUI()
+    }
     func failWith(error: String?) {
         print(error ?? "")
-    }
-    
-    func succes() {
-        imageViewPoster.image = movieDetailVM.image
     }
 }
 

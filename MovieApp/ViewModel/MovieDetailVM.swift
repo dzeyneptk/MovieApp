@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import AlamofireImage
 protocol MovieDetailDelegate: class {
+    func failWith(error: String?)
+    func succes()
+}
+protocol PosterImageDelegate: class {
     func failWith(error: String?)
     func succes()
 }
@@ -15,7 +20,9 @@ protocol MovieDetailDelegate: class {
 class MovieDetailVM {
     private var responseModel: ResponseModel?
     private var result: String = ""
+    private var imageResult: UIImage? = nil
     weak var delegate: MovieDetailDelegate?
+    weak var posterDelegate: PosterImageDelegate?
     
     // MARK: - OMDbAPIService
     func getMovieName(by text: String) {
@@ -33,6 +40,20 @@ class MovieDetailVM {
                 self.responseModel = response
                 self.result = response.title ?? ""
                 self.delegate?.succes()
+            }
+        }
+    }
+    
+    // MARK: - Image Fetch Service
+    func getImage(url: String) {
+        NetworkManager.shared.fetchImage(imageUrl: url)  { (image, error) in
+        if let error = error {
+            self.posterDelegate?.failWith(error: error.localizedDescription)
+            return
+        }
+            if let image = image {
+                self.imageResult = image
+                self.posterDelegate?.succes()
             }
         }
     }
@@ -61,4 +82,8 @@ class MovieDetailVM {
     var poster: String? {
         return ResponseVM(model: responseModel).poster
     }
+    var image: UIImage? {
+        return imageResult
+    }
 }
+

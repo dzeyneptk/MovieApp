@@ -16,7 +16,7 @@ class DetailVC: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var tableViewDetails: UITableView!
     @IBOutlet weak var imageViewPoster: UIImageView!
-        
+    
     // MARK: - Private Parameters
     private var data: [String] = []
     var movieDetailVM = MovieDetailVM()
@@ -33,13 +33,14 @@ class DetailVC: UIViewController {
         data.append("Plot:" + (movieDetailVM.plot ?? ""))
         data.append("Actors: " + (movieDetailVM.actors ?? "") )
         data.append("Country: " + (movieDetailVM.country ?? "") )
-        showImage()
+        movieDetailVM.posterDelegate = self
+        movieDetailVM.getImage(url: movieDetailVM.poster ?? "")
         self.tableViewDetails.reloadData()
         Analytics.logEvent("movie_details", parameters: [
-        "name": movieDetailVM.getString ?? "" as NSObject,
-        "imdbrating": movieDetailVM.imdbRating ?? "" as NSObject,
-        "actors": movieDetailVM.actors ?? "" as NSObject,
-        "country": movieDetailVM.country ?? "" as NSObject,
+            "name": movieDetailVM.getString ?? "" as NSObject,
+            "imdbrating": movieDetailVM.imdbRating ?? "" as NSObject,
+            "actors": movieDetailVM.actors ?? "" as NSObject,
+            "country": movieDetailVM.country ?? "" as NSObject,
         ])
     }
     
@@ -49,19 +50,6 @@ class DetailVC: UIViewController {
         self.tableViewDetails.dataSource = self
         self.tableViewDetails.backgroundColor = UIColor.clear
         self.tableViewDetails.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    
-    private func showImage(){
-            Alamofire.request(movieDetailVM.poster ?? "").responseImage { response in
-                debugPrint(response)
-
-                print(response.request!)
-
-                if case .success(let image) = response.result {
-                    print("image downloaded: \(image)")
-                    self.imageViewPoster.image = image
-                }
-            }
     }
 }
 
@@ -89,6 +77,18 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // movieDetailVM.getMovieName(by: self.data[indexPath.row])
         
+    }
+}
+
+// MARK: - PosterImageDelegate
+extension DetailVC: PosterImageDelegate {
+    
+    func failWith(error: String?) {
+        print(error ?? "")
+    }
+    
+    func succes() {
+        imageViewPoster.image = movieDetailVM.image
     }
 }
 

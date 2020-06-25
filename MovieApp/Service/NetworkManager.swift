@@ -40,4 +40,19 @@ class NetworkManager {
                 }
         }
     }
+    
+    func fetchImage(imageUrl: String, complationHandler: @escaping (Image?, Error?) -> Void ) {
+        ActivityIndicator.shared.showIndicator()
+        Alamofire.request(imageUrl)
+            .responseImage { response in
+                switch response.result {
+                case .success(let image):
+                    complationHandler(image, nil)
+                    ActivityIndicator.shared.stopIndicator()
+                case .failure(let error):
+                    ActivityIndicator.shared.stopIndicator()
+                    complationHandler(nil, error)
+                }
+        }
+    }
 }

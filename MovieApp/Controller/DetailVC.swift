@@ -8,12 +8,15 @@
 
 import UIKit
 import Firebase
+import AlamofireImage
+import Alamofire
 
 class DetailVC: UIViewController {
     
     // MARK: - IBOutlets
     @IBOutlet weak var tableViewDetails: UITableView!
-    
+    @IBOutlet weak var imageViewPoster: UIImageView!
+        
     // MARK: - Private Parameters
     private var data: [String] = []
     var movieDetailVM = MovieDetailVM()
@@ -30,6 +33,7 @@ class DetailVC: UIViewController {
         data.append("Plot:" + (movieDetailVM.plot ?? ""))
         data.append("Actors: " + (movieDetailVM.actors ?? "") )
         data.append("Country: " + (movieDetailVM.country ?? "") )
+        showImage()
         self.tableViewDetails.reloadData()
         Analytics.logEvent("movie_details", parameters: [
         "name": movieDetailVM.getString ?? "" as NSObject,
@@ -45,6 +49,19 @@ class DetailVC: UIViewController {
         self.tableViewDetails.dataSource = self
         self.tableViewDetails.backgroundColor = UIColor.clear
         self.tableViewDetails.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    private func showImage(){
+            Alamofire.request(movieDetailVM.poster ?? "").responseImage { response in
+                debugPrint(response)
+
+                print(response.request!)
+
+                if case .success(let image) = response.result {
+                    print("image downloaded: \(image)")
+                    self.imageViewPoster.image = image
+                }
+            }
     }
 }
 

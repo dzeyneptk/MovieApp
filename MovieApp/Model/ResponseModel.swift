@@ -22,7 +22,7 @@ struct ResponseModel : Codable {
     let language : String?
     let country : String?
     let awards : String?
-    let poster : String?
+    var poster : String?
     let ratings : [Ratings]?
     let metascore : String?
     let imdbRating : String?

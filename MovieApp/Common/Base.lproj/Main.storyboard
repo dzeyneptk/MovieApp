@@ -99,29 +99,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="SF2-E8-sro">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="386" width="414" height="476"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wrc-Wg-Zfi">
+                                <rect key="frame" x="87" y="175" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="WFB-s1-U0t"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.67843137254901964" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="SF2-E8-sro" firstAttribute="top" secondItem="EEZ-aP-mhQ" secondAttribute="top" id="4PI-4M-aIb"/>
-                            <constraint firstItem="SF2-E8-sro" firstAttribute="leading" secondItem="EEZ-aP-mhQ" secondAttribute="leading" id="5Rl-1m-ZYW"/>
-                            <constraint firstItem="SF2-E8-sro" firstAttribute="trailing" secondItem="EEZ-aP-mhQ" secondAttribute="trailing" id="klt-Wk-hqf"/>
-                            <constraint firstItem="SF2-E8-sro" firstAttribute="bottom" secondItem="EEZ-aP-mhQ" secondAttribute="bottom" id="oLv-jT-W0L"/>
-                            <constraint firstItem="SF2-E8-sro" firstAttribute="centerX" secondItem="xUr-ZM-jZB" secondAttribute="centerX" id="xAY-OC-qxJ"/>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="top" secondItem="wrc-Wg-Zfi" secondAttribute="bottom" constant="83" id="1mU-M3-ttV"/>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="bottom" secondItem="EEZ-aP-mhQ" secondAttribute="bottom" id="2WI-Z2-6iI"/>
+                            <constraint firstItem="SF2-E8-sro" firstAttribute="leading" secondItem="EEZ-aP-mhQ" secondAttribute="leading" id="HjL-zJ-j4W"/>
+                            <constraint firstItem="wrc-Wg-Zfi" firstAttribute="leading" secondItem="EEZ-aP-mhQ" secondAttribute="leading" constant="87" id="P4Q-is-Xgi"/>
+                            <constraint firstItem="wrc-Wg-Zfi" firstAttribute="centerX" secondItem="SF2-E8-sro" secondAttribute="centerX" id="YeT-9r-k58"/>
+                            <constraint firstItem="EEZ-aP-mhQ" firstAttribute="trailing" secondItem="wrc-Wg-Zfi" secondAttribute="trailing" constant="87" id="dog-7I-nRn"/>
+                            <constraint firstItem="wrc-Wg-Zfi" firstAttribute="top" secondItem="EEZ-aP-mhQ" secondAttribute="top" constant="87" id="u8b-uD-JkQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EEZ-aP-mhQ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="anS-08-FrT"/>
                     <connections>
+                        <outlet property="imageViewPoster" destination="wrc-Wg-Zfi" id="Iak-2U-QQy"/>
                         <outlet property="tableViewDetails" destination="SF2-E8-sro" id="zF6-5j-UoV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T17-eA-bSl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1700.0000000000002" y="138.61607142857142"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5sY-qy-EUJ">
+            <objects>
+                <viewController id="9Ev-C2-RHa" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hpd-j0-bW5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="yAV-Hq-HmI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g1B-Vv-qcS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1710" y="844"/>
         </scene>
     </scenes>
     <resources>

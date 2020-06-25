@@ -58,4 +58,7 @@ class MovieDetailVM {
     var getString: String? {
         return result
     }
+    var poster: String? {
+        return ResponseVM(model: responseModel).poster
+    }
 }

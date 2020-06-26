@@ -34,13 +34,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pinsoft.png" translatesAutoresizingMaskIntoConstraints="NO" id="QXv-eG-w8s">
-                                <rect key="frame" x="87" y="340" width="240" height="172"/>
+                                <rect key="frame" x="87" y="384" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.67843137254901964" green="0.70980392156862748" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="QXv-eG-w8s" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="6EQ-63-CZJ"/>
-                            <constraint firstItem="QXv-eG-w8s" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="296" id="ROz-n2-T9B"/>
                             <constraint firstItem="QXv-eG-w8s" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="alh-dD-N3X"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QXv-eG-w8s" secondAttribute="bottom" constant="350" id="cCe-XI-TOn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QXv-eG-w8s" secondAttribute="trailing" constant="87" id="dIC-5g-e5t"/>
@@ -135,6 +134,7 @@
                                     <constraint firstAttribute="width" secondItem="UgP-m1-T6l" secondAttribute="height" multiplier="2:2" id="qje-xu-gU6"/>
                                     <constraint firstAttribute="height" constant="35" id="qu6-7e-T25"/>
                                 </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <state key="normal" image="xmark.circle" catalog="system"/>
                                 <connections>
                                     <action selector="closeBtnTapped:" destination="NOL-18-pQ5" eventType="touchUpInside" id="GY5-Z5-9FH"/>

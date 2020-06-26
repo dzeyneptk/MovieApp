@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         application.registerForRemoteNotifications()
+        getPushToken()
         return true
     }
 
@@ -69,7 +70,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    func getPushToken() {
+        InstanceID.instanceID().instanceID { (result, error) in
+          if let error = error {
+            print("Error fetching remote instance ID: \(error)")
+          } else if let result = result {
+            print("Remote instance ID token: \(result.token)")
+          }
+        }
+    }
 }
 
 extension AppDelegate : MessagingDelegate {

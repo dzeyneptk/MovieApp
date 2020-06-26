@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F8CE0A924A62E71000E9005 /* Icon-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8CE0A824A62E70000E9005 /* Icon-120.png */; };
+		5F8CE0AB24A62E7A000E9005 /* Icon-180.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8CE0AA24A62E7A000E9005 /* Icon-180.png */; };
 		5FBDCCA224A260CC003C5FDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCA124A260CC003C5FDA /* AppDelegate.swift */; };
 		5FBDCCA424A260CC003C5FDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCA324A260CC003C5FDA /* SceneDelegate.swift */; };
 		5FBDCCA624A260CC003C5FDA /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBDCCA524A260CC003C5FDA /* SplashVC.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F8CE0A824A62E70000E9005 /* Icon-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-120.png"; sourceTree = "<group>"; };
+		5F8CE0AA24A62E7A000E9005 /* Icon-180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-180.png"; sourceTree = "<group>"; };
 		5FBDCC9E24A260CC003C5FDA /* MovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FBDCCA124A260CC003C5FDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FBDCCA324A260CC003C5FDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 				5FBDCCE624A4E790003C5FDA /* MovieApp.entitlements */,
 				5FBDCCAD24A260CE003C5FDA /* Assets.xcassets */,
 				5FBDCCE024A4A183003C5FDA /* pinsoft.png */,
+				5F8CE0A824A62E70000E9005 /* Icon-120.png */,
+				5F8CE0AA24A62E7A000E9005 /* Icon-180.png */,
 				5FBDCCBA24A3447C003C5FDA /* Common */,
 				5FBDCCBB24A344AF003C5FDA /* Controller */,
 				5FBDCCBC24A344BA003C5FDA /* View */,
@@ -264,7 +270,9 @@
 				5FBDCCB124A260CE003C5FDA /* LaunchScreen.storyboard in Resources */,
 				5FBDCCDD24A3DC9D003C5FDA /* GoogleService-Info.plist in Resources */,
 				5FBDCCAE24A260CE003C5FDA /* Assets.xcassets in Resources */,
+				5F8CE0A924A62E71000E9005 /* Icon-120.png in Resources */,
 				5FBDCCA924A260CC003C5FDA /* Main.storyboard in Resources */,
+				5F8CE0AB24A62E7A000E9005 /* Icon-180.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

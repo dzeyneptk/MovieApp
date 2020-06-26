@@ -130,7 +130,8 @@ extension SearchVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: AppConstant.segueIdentifier.searchToDetail.description, sender: nil)
+
+       performSegue(withIdentifier: AppConstant.segueIdentifier.searchToDetail.description, sender: nil)
     }
 }
 

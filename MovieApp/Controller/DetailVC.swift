@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import Firebase
-
-class DetailVC: UIViewController, UIGestureRecognizerDelegate {
+class DetailVC: UIViewController, UIGestureRecognizerDelegate{
     
     // MARK: - IBOutlets
     @IBOutlet private weak var tableViewDetails: UITableView!
     @IBOutlet private weak var imageViewPoster: UIImageView!
     
-    // MARK: - Private Parameters
+    // MARK: - Parameters
     var movieDetailVM = MovieDetailVM()
     
     // MARK: - Life Cycle
@@ -25,14 +23,6 @@ class DetailVC: UIViewController, UIGestureRecognizerDelegate {
         Gradient.shared.addGradientToView(view: view)
         movieDetailVM.getImage(url: movieDetailVM.poster ?? "")
         movieDetailVM.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
     
     // MARK: - Private Functions
@@ -49,14 +39,6 @@ class DetailVC: UIViewController, UIGestureRecognizerDelegate {
     private func updateUI() {
         imageViewPoster.image = movieDetailVM.image
         movieDetailVM.sendAnalytics()
-        InstanceID.instanceID().instanceID { (result, error) in
-          if let error = error {
-            print("Error fetching remote instance ID: \(error)")
-          } else if let result = result {
-            print("Remote instance ID token: \(result.token)")
-          //  self.instanceIDTokenMessage.text  = "Remote InstanceID token: \(result.token)"
-          }
-        }
     }
 }
 
